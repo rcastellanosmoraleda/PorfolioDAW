@@ -1,1 +1,1 @@
-[Diario_1](./Diario/Diario UT1 GitHub y MarkDown.md)
+[Diario_1](./Diario/Diario_UT1_GitHub_MarkDown.md)
