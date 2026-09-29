@@ -69,5 +69,5 @@ Conocer estas funciones básicas es importante para trabajar de una forma más o
 ## Enlaces
 
 * Herramienta: [github.com](https://github.com)
-* Repositorio de la práctica: [github.com/cras700/Repositorio](https://github.com/rcastellanosmoraleda/PorfolioDAW)
+* Repositorio de la práctica: [github.com/rcastellanosmoraleda](https://github.com/rcastellanosmoraleda/PorfolioDAW)
 * Documentación oficial: [docs.github.com](https://docs.github.com)
