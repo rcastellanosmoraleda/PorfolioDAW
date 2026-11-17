@@ -67,7 +67,7 @@ Usé OpenSSL para crear mi propio certificado:
 
 ```bash
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-  -keyout /etc/ssl/private/aroa-https.key \
+  -keyout /etc/ssl/private/rodrigo-https.key \
   -out /etc/ssl/certs/aroa-https.crt
 ```
 
@@ -79,7 +79,7 @@ Al ejecutarlo me pidió rellenar varios datos:
 - **Organization Name**: MiEmpresa
 - **Organizational Unit Name**: Lo dejé en blanco
 - **Common Name**: Puse **localhost** (esto es muy importante que coincida con el ServerName luego)
-- **Email Address**: aroa@pruebas.com
+- **Email Address**: rodrigo@pruebas.com
 
 ![Generación del certificado SSL](img/02_generacion_certificado.png)
 
@@ -90,13 +90,13 @@ El comando genera dos archivos importantes: el certificado (.crt) y la clave pri
 Primero creé una carpeta para mi sitio web:
 
 ```bash
-sudo mkdir -p /var/www/https-aroa
+sudo mkdir -p /var/www/https-rodrigo
 ```
 
 Luego creé un archivo HTML simple dentro para tener algo que mostrar:
 
 ```bash
-sudo nano /var/www/https-aroa/index.html
+sudo nano /var/www/https-rodrigo/index.html
 ```
 
 Puse un HTML básico:
@@ -118,7 +118,7 @@ Puse un HTML básico:
 Después tuve que crear el archivo de configuración del VirtualHost:
 
 ```bash
-sudo nano /etc/apache2/sites-available/aroa-https.conf
+sudo nano /etc/apache2/sites-available/rodrigo-https.conf
 ```
 
 Aquí está mi configuración completa:
@@ -127,20 +127,20 @@ Aquí está mi configuración completa:
 <VirtualHost *:443>
     ServerName localhost
 
-    DocumentRoot /var/www/https-aroa
+    DocumentRoot /var/www/https-rodrigo
 
     SSLEngine on
     SSLCertificateFile /etc/ssl/certs/aroa-https.crt
     SSLCertificateKeyFile /etc/ssl/private/aroa-https.key
 
-    <Directory /var/www/https-aroa>
+    <Directory /var/www/https-rodrigo>
         Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
 
-    ErrorLog ${APACHE_LOG_DIR}/aroa-https-error.log
-    CustomLog ${APACHE_LOG_DIR}/aroa-https-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/rodrigo-https-error.log
+    CustomLog ${APACHE_LOG_DIR}/rodrigo-https-access.log combined
 </VirtualHost>
 ```
 
@@ -158,7 +158,7 @@ Lo más importante de esta configuración es:
 Una vez configurado todo, activé mi nuevo sitio:
 
 ```bash
-sudo a2ensite aroa-https.conf
+sudo a2ensite rodrigo-https.conf
 ```
 
 Antes de reiniciar comprobé que no había errores de sintaxis:
